@@ -30,9 +30,12 @@ This package installs `.conf` files to `/usr/lib/systemd/system/*.service.d/`.
 - opendmarc
 - pkgstats
 - postfix
-- sshd
 
 Some sandboxing options, like those used for nginx, opendkim, and opendmarc, assume you are running the service as an unprivileged user. There is also a `user.conf` file in their directory, in addition to the regular `hardening.conf`.
+
+The `sshd` override only adds IPAccounting, no sandboxing.
+
+The `systemd-logind` override only adds the service to the `proc` group, un-breaking the service when `/proc` is mounted with `hidepid=2,gid=proc`.
 
 See these links for more information:
 

@@ -30,6 +30,7 @@ This package installs `.conf` files to `/usr/lib/systemd/system/*.service.d/`.
 - opendmarc
 - pkgstats
 - postfix
+- usbguard
 
 Some sandboxing options, like those used for nginx, opendkim, and opendmarc, assume you are running the service as an unprivileged user. There is also a `user.conf` file in their directory, in addition to the regular `hardening.conf`.
 

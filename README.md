@@ -37,6 +37,23 @@ This package installs `.conf` files to `/usr/lib/systemd/system/*.service.d/`.
 ### cupsd
 The cupsd overrides have only been tested with an HP printer on the local network. Printers from other manufacturers or printers connected via a different interface (e.g. USB, SAMBA, etc.) may not work. Patches accepted.
 
+### dictd
+The dictd overrides assume that you only want to access the dictd server from your local machine. The pid file is somewhat useless, so its default location is not writable with these hardening options. Here is an example `dictd.conf` snippet for these hardening options:
+
+```
+global {
+    site site.info
+    pid_file /dev/null
+}
+
+# who's allowed.  You might want to change this.
+access {
+  allow 127.0.0.*
+}
+```
+
+This snippet makes dictd not create a pid file and only allow access from the localhost.
+
 ### services run as unprivileged user
 Some sandboxing options, like those used for nginx, opendkim, and opendmarc, assume you are running the service as an unprivileged user. There is also a `user.conf` file in their directory, in addition to the regular `hardening.conf`.
 

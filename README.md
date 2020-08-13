@@ -22,26 +22,34 @@ This package installs `.conf` files to `/usr/lib/systemd/system/*.service.d/`.
 ## Services
 
 - bluetooth
+- dictd
 - dovecot
 - fail2ban
 - iwd
 - nginx
 - opendkim
 - opendmarc
+- org.cups.cupsd
 - pkgstats
 - postfix
 - usbguard
 
+### cupsd
+The cupsd overrides have only been tested with an HP printer on the local network. Printers from other manufacturers or printers connected via a different interface (e.g. USB, SAMBA, etc.) may not work. Patches accepted.
+
+### services run as unprivileged user
 Some sandboxing options, like those used for nginx, opendkim, and opendmarc, assume you are running the service as an unprivileged user. There is also a `user.conf` file in their directory, in addition to the regular `hardening.conf`.
-
-The `sshd` override only adds IPAccounting, no sandboxing.
-
-The `systemd-logind` override only adds the service to the `proc` group, un-breaking the service when `/proc` is mounted with `hidepid=2,gid=proc`.
-
-The `systemd-networkd` override only adds `apparmor.service` to the `After=` option, so that the service doesn't start before its AppArmor profile is loaded.
 
 See these links for more information:
 
 https://wiki.archlinux.org/index.php/Nginx#Running_unprivileged_using_systemd
 
 https://wiki.archlinux.org/index.php/OpenDKIM#Security
+
+### other caveats
+
+The `sshd` override only adds IPAccounting, no sandboxing.
+
+The `systemd-logind` override only adds the service to the `proc` group, un-breaking the service when `/proc` is mounted with `hidepid=2,gid=proc`.
+
+The `systemd-networkd` override only adds `apparmor.service` to the `After=` option, so that the service doesn't start before its AppArmor profile is loaded.y

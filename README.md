@@ -11,7 +11,7 @@ Simply copy the `*.service.d` files to `/etc/systemd/system/`.
 If you want to install as a package, I maintain a PKGBUILD:
 
 ```
-$ git clone https://git.sr.ht/~krathalan/pkgbuilds
+$ git clone https://github.com/krathalan/pkgbuilds
 $ cd pkgbuilds/krathalans-systemd-sandboxing-git
 $ less PKGBUILD # Always inspect PKGBUILDS before running makepkg!
 $ makepkg -i

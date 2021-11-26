@@ -69,4 +69,4 @@ The `sshd` override only adds IPAccounting, no sandboxing.
 
 The `systemd-logind` override only adds the service to the `proc` group, un-breaking the service when `/proc` is mounted with `hidepid=2,gid=proc`.
 
-The `systemd-networkd` override only adds `apparmor.service` to the `After=` option, so that the service doesn't start before its AppArmor profile is loaded.y
+The `systemd-networkd` override only adds `apparmor.service` to the `After=` option, so that the service doesn't start before its AppArmor profile is loaded.

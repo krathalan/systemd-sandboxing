@@ -1,5 +1,5 @@
 # systemd-sandboxing
-Drop-in `.conf` files for sandboxing systemd services.
+Drop-in `.conf` files for sandboxing systemd services. Services are targeted that are long-running and either (1) network-facing; or (2) receive, send, or otherwise parse arbitrary data.
 
 ## Explanation of options
 View the `guide.conf` file in the root of this repository for a short explanation of each option. Most comments come from `systemd.exec(5)` and `systemd.resource-control(5)` man pages. Most options come from all of the options that `systemd-analyze security` uses to score a service.
@@ -22,17 +22,18 @@ This package installs `.conf` files to `/usr/lib/systemd/system/*.service.d/`.
 ## Services
 
 - bluetooth
-- dictd
 - dovecot
-- fail2ban
 - iwd
+- NetworkManager
 - nginx
+- nitter
 - opendkim
 - opendmarc
 - org.cups.cupsd
-- pkgstats
 - postfix
-- usbguard
+- postgrey
+- radicale
+- redis
 
 ### cupsd
 The cupsd overrides have only been tested with an HP printer on the local network. Printers from other manufacturers or printers connected via a different interface (e.g. USB, SAMBA, etc.) may not work. Patches accepted.
